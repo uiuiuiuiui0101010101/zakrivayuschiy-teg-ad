@@ -42,12 +42,14 @@
 }
 
 .dialog__close {
+  position: relative;
   border: none;
   outline: 2px solid #000;
   inline-size: var(--width-dialog-button-close);
   block-size: 38px;
   background-color: #fff;
   transition: box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .dialog__text-conteiner {
@@ -110,7 +112,7 @@
 
 .card__ober-img {
   position: relative;
-  width: var(--width-main);
+/*  width: var(--width-main); */
   box-sizing: border-box;
 }
 
@@ -184,17 +186,37 @@
 }
 
 .card__like-button {
+  position: relative;
   width: 130px;
   height: 38px;
   background-color: #fff;
   border: none;
   outline: 2px solid #000;
   transition: color 0.5s ease-in-out;
+  overflow: hidden;
 }
 
+.save-button::after, .dialog__close::after, .card__like-button::after {    
+   content: "";
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    background: #000;
+    filter: hue-rotate(180deg);
+    transition: left 0.3s ease;
+  }
+  
+.save-button:hover::after, .dialog__close:hover::after, .card__like-button:hover::after {
+  left: 0;
+ }
+
 .button__text {
+  position: relative;
   font-family: "PressStart2P-Regular";
   font-size: 14px;
+  z-index: 100;
 }
 
 .card__icon-size {
@@ -203,6 +225,7 @@
 }
 
 .save-button {
+  position: relative;
   width: var(--width-save);
   height: var(--height-save);
   margin: 0 var(--margin-save) 102px var(--margin-save);
@@ -213,16 +236,21 @@
   border: none;
   outline: 2px solid #000;
   transition: box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .save-button__disketto {
+  position: relative;
   width: 21px;
   margin-top: 2px;
+  z-index: 100;
 }
 
 .save-button__text {
   font-family: "PressStart2P-Regular";
   font-size: 14px;
+  position: relative;
+  z-index: 100;
 }
 
 /* градиенты на карточки */
@@ -294,15 +322,13 @@
   outline: 2px solid var(--color);
 }
 
-.card__like-button:hover,
-.save-button:hover,
+.card__like-button:hover, .save-button:hover,
 .dialog__close:hover {
-  background-color: #000;
   color: #fff;
   transition:
-    background-color 0.5s ease-in,
-    color 0.3s ease-in;
+    color 0.2s ease-in;
 }
+
 
 .save-button:hover .save-button__disketto {
   filter: invert(1);
